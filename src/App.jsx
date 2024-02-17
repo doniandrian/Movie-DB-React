@@ -9,6 +9,7 @@ import TopRated from './assets/pages/Top-rated'
 import People from './assets/pages/People'
 import axios from 'axios'
 import PeopleDetail from './assets/pages/PeopleDetail'
+import Footer from './assets/Component/Footer'
 
 
 import './App.css'
@@ -224,6 +225,7 @@ function App() {
         </Routes>
 
       </Router>
+      <Footer />
     </>
   )
 }

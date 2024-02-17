@@ -1,0 +1,251 @@
+:root {
+    --color-white-100: hsl(206, 5%, 100%);
+    --color-white-200: hsl(206, 5%, 90%);
+    --color-white-300: hsl(206, 5%, 80%);
+    --color-white-400: hsl(206, 5%, 65%);
+    --color-white-500: hsl(206, 5%, 50%);
+
+    --color-black-100: hsl(213, 20%, 10%);
+    --color-black-200: hsl(213, 23%, 8%);
+    --color-black-300: hsl(214, 21%, 6%);
+    --color-black-400: hsl(210, 21%, 6%);
+    --color-black-500: hsl(216, 22%, 4%);
+    --color-black-600: hsl(220, 18%, 3%);
+    --color-black-700: hsl(220, 27%, 2%);
+    --color-black-800: hsl(180, 20%, 1%);
+
+    --color-blue-100: hsl(214, 95%, 93%);
+    --color-blue-200: hsl(213, 97%, 87%);
+    --color-blue-300: hsl(212, 96%, 78%);
+    --color-blue-400: hsl(213, 94%, 68%);
+    --color-blue-500: hsl(217, 91%, 60%);
+    --color-blue-600: hsl(221, 83%, 53%);
+    --color-blue-700: hsl(224, 76%, 48%);
+    --color-blue-800: hsl(226, 71%, 40%);
+    --color-blue-900: hsl(224, 64%, 33%);
+
+    --shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+        0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    transition: all 0.35s ease;
+    box-shadow: var(--shadow-small);
+    background-color: var(--color-black-100);
+}
+
+
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-family: inherit;
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.container {
+    max-width: 75rem;
+    height: auto;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+.active{
+    background-color: #646cff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: #646cff;
+    text-decoration: underline;
+}
+
+.burger {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    user-select: none;
+    order: -1;
+    z-index: 10;
+    width: 1.6rem;
+    height: 1.15rem;
+    border: none;
+    outline: none;
+    background: none;
+    visibility: visible;
+    transform: rotate(0deg);
+    transition: 0.35s ease;
+    margin-left: auto;
+    /* Push the burger to the right */
+}
+
+@media only screen and (min-width: 48rem) {
+    .burger {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+.burger-line {
+    position: absolute;
+    display: block;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border: none;
+    outline: none;
+    opacity: 1;
+    border-radius: 1rem;
+    transform: rotate(0deg);
+    background-color: white;
+    transition: 0.25s ease-in-out;
+}
+
+.burger-line:nth-child(1) {
+    top: 0px;
+}
+
+.burger-line:nth-child(2) {
+    top: 0.5rem;
+    width: 70%;
+}
+
+.burger-line:nth-child(3) {
+    top: 1rem;
+}
+
+.burger.is-active .burger-line:nth-child(1) {
+    top: 0.5rem;
+    transform: rotate(135deg);
+}
+
+.burger.is-active .burger-line:nth-child(2) {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.burger.is-active .burger-line:nth-child(3) {
+    top: 0.5rem;
+    transform: rotate(-135deg);
+}
+
+.menu {
+    display: flex;
+}
+
+.menu-inner {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+
+.menu-item {
+    position: relative; /* Add position relative to create a positioning context for :after */
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    margin-right: 20px;
+    cursor: pointer;
+    content: "";
+    display: block;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.menu-item:after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px; /* Adjust the height of the underline */
+    background-color: #fff;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.menu-item:hover:after {
+    width: 100%;
+    left: 0;
+
+}
+
+.menu-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+    .burger {
+        display: block;
+        margin-left: 0;
+        /* Remove margin to align burger to the left */
+    }
+
+    .burger:hover{
+        transform: scale(1.2);
+        transition: transform 0.3s;
+    }
+
+    .brand {
+        margin-right: 0;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        transition: transform 0.3s ease-in-out; /* Add transition for smooth animation */
+        transform: translateY(-100%);
+    }
+    .menu-inner {
+        gap: 10px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center; /* Center the menu items */
+        width: 100%;
+    }
+
+    .menu.show {
+        display: flex; transform: translateY(0);
+        
+    }
+    .menu-link {
+        text-decoration: none;
+        color: #fff;
+        font-size: 16px;
+        padding: 10px;
+        transition: color 0.3s ease-in-out;
+    }
+
+    .menu-item {
+        margin: 10px 0;
+    }
+}
